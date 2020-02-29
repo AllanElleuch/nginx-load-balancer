@@ -1,6 +1,3 @@
-FROM node
-WORKDIR /app
-RUN npm install express
-COPY . .
-CMD node app.js
-EXPOSE 5000
+FROM nginx
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
