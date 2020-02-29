@@ -1,8 +1,12 @@
-FROM node
+FROM node:13
 USER node
+RUN mkdir /home/node/webapp
+RUN  mkdir ~/.npm-global
+WORKDIR /home/node/webapp
+
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH=$PATH:/home/node/.npm-global/bin
-WORKDIR /home/node
+
 COPY package.json .
 
 RUN npm install 
